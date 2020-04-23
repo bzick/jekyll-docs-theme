@@ -15,7 +15,6 @@
     {%- endif -%}
 {% endcapture %}
 
-{% assign sanitize   = page.table_of_contents.sanitize   | default: layout.table_of_contents.sanitize   | default: false %}
 {% assign h_min      = page.table_of_contents.h_min      | default: layout.table_of_contents.h_min      | default: 1 %}
 {% assign h_max      = page.table_of_contents.h_max      | default: layout.table_of_contents.h_max      | default: 3 %}
 {% assign ordered    = page.table_of_contents.ordered    | default: layout.table_of_contents.ordered    | default: false %}
@@ -27,7 +26,7 @@
      html=content
      id=include.id
      class=class
-     sanitize=sanitize
+     sanitize=true
      h_min=h_min
      h_max=h_max
      ordered=ordered
