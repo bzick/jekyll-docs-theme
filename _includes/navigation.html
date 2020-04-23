@@ -22,7 +22,7 @@
                     <li class="nav-item {% if page.url == p.url %}active{% endif %}">
                         <a
                             class="nav-link"
-                            href="{{ p.url }}"
+                            href="{{ p.url | relative_url }}"
                         >
                             {% include fa-icon.html icon=p.icon brand=p.brand %}
                             {{ p.title }}
@@ -35,7 +35,7 @@
                     <li class="nav-item {% if page.url == p.url %}active{% endif %}">
                         <a
                             class="nav-link"
-                            href="{{ p.url }}"
+                            href="{{ p.url | relative_url }}"
                         >
                             {% include fa-icon.html icon=p.icon brand=p.brand %}
                             {{ p.title }}
