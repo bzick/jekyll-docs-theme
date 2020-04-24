@@ -18,26 +18,22 @@
 
         <nav class="navbar-collapse collapse" role="navigation" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                {% for p in site.links.pages %}
-                    <li class="nav-item {% if page.url == p.url %}active{% endif %}">
-                        <a
-                            class="nav-link"
-                            href="{{ p.url | relative_url }}"
-                        >
-                            {% include fa-icon.html icon=p.icon brand=p.brand %}
-                            {{ p.title }}
-                        </a>
-                    </li>
-                {% endfor %}
+                {% if site.links.pages %}
+                    {% for p in site.links.pages %}
+                        <li class="nav-item {% if page.url == p.url %}active{% endif %}">
+                            <a class="nav-link" href="{{ p.url | relative_url }}">
+                                {%- include fa-icon.html icon=p.icon brand=p.brand -%}
+                                {{ p.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
             </ul>
             <ul class="navbar-nav ml-auto">
                 {% for p in site.links.header %}
                     <li class="nav-item {% if page.url == p.url %}active{% endif %}">
-                        <a
-                            class="nav-link"
-                            href="{{ p.url | relative_url }}"
-                        >
-                            {% include fa-icon.html icon=p.icon brand=p.brand %}
+                        <a class="nav-link" href="{{ p.url | relative_url }}">
+                            {%- include fa-icon.html icon=p.icon brand=p.brand -%}
                             {{ p.title }}
                         </a>
                     </li>
