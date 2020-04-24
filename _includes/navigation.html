@@ -27,6 +27,29 @@
                             </a>
                         </li>
                     {% endfor %}
+                {% else %}
+                    {% assign sorted_pages = site.pages | sort: "title" %}
+                    {% for p in sorted_pages %}
+                        {% assign is_homepage = false %}
+                        {% if p.homepage == true or p.isHome == true %}
+                            {% assign is_homepage = true %}
+                        {% endif %}
+
+                        {% assign show_in_menu = true %}
+                        {% if p.show_in_menu != nil and p.show_in_menu == false %}
+                            {% assign show_in_menu = false %}
+                        {% elsif p.hide != nil and p.hide == true %}
+                            {% assign show_in_menu = false %}
+                        {% endif %}
+
+                        {%- if is_homepage != true and show_in_menu == true and p.title -%}
+                            <li class="nav-item {% if page.title == p.title %}active{% endif %}">
+                                <a class="nav-link" href="{{ p.url | relative_url }}">
+                                    {{ p.title }}
+                                </a>
+                            </li>
+                        {%- endif -%}
+                    {% endfor %}
                 {% endif %}
             </ul>
             <ul class="navbar-nav ml-auto">
